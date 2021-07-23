@@ -1,6 +1,6 @@
 ##geoTemperatureFieldByChebyshev
 
-![1](http://latex.codecogs.com/svg.latex? \int_a^b f(x)   dx)
+![1](http://latex.codecogs.com/svg.latex? $\int_a^b f(x) dx$)
 
 ![2](http://latex.codecogs.com/svg.latex?\begin{cases}a_1=a_{2}\\\\b_{1}=b_{2}\\\\\end{cases})
 
