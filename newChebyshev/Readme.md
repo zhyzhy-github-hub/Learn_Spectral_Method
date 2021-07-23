@@ -301,3 +301,134 @@ $$
 u(x,t) = 100 + 3 \sin\left(5 \pi x\right)\mathrm{e}^{-25 \pi^2 t}
 $$
 ![NonHomogeneoDirichletBCHearTransferEqu1D](Figures/NonHomogeneoDirichletBCHearTransferEqu1D.png)
+
+
+##2D Heat Transfer Problem
+$$
+\Delta = \frac{\partial^2 }{\partial x^2} + \frac{\partial^2 }{\partial y^2}
+\to \tilde{\bm{L}} 
+= \left(\bm{I}_{N-1} \otimes  \tilde{\bm{D}}^2_M + \tilde{\bm{D}}^2_N \otimes \bm{I}_{M-1} \right)
+$$
+$$
+\frac{\bm{u}^{k+1} - \bm{u}^k}{\Delta t}
+= c^2 \left(\bm{I}_{N-1} \otimes  \tilde{\bm{D}}^2_M + \tilde{\bm{D}}^2_N \otimes \bm{I}_{M-1} \right)\bm{u}^{k+1}
+$$
+$$
+\left[\frac{\bm{I}}{\Delta t} - 
+c^2\left(\bm{I}_{N-1} \otimes  \tilde{\bm{D}}^2_M + \tilde{\bm{D}}^2_N \otimes \bm{I}_{M-1} \right)\right]
+\bm{u}^{k+1} = \frac{1}{\Delta t}\bm{u}^{k}
+$$
+
+
+###2D Heat Transfer Problem Dirichlet Boundary Condition
+$$
+\begin{cases}
+{\large\frac{\partial u}{\partial t} 
+= \frac{1}{\pi^2} \left( \frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2} \right) } ,\; 
+0 \leq x \leq 1,\; 0 \leq y \leq 1,  \;  t \geq 0 \\
+u(0,y,t) = u(1,y,t) = 0, \; 0 \leq y \leq 1,  \;  t \geq 0  \\
+u(x,0,t) = u(x,1,t) = 0, \; 0 \leq x \leq 1,  \;  t \geq 0  \\
+u(x,y,0) = \sin(\pi x) \sin(\pi y), \; 0 \leq x \leq 1, \;0 \leq y \leq 1,
+\end{cases}
+$$
+$$
+u(x,y,t) = \sin(\pi x) \sin(\pi y) \mathrm{e}^{-2t}
+$$
+
+![HeatTransferEquDirichletBC2DNumerical](Figures/HeatTransferEquDirichletBC2D.gif)
+![HeatTransferEquDirichletBC2DNumerical](Figures/HeatTransferEquDirichletBC2DNumerical.gif)
+
+##2D Heat Transfer Problem Robin Boundary Condition
+$$
+\begin{cases}
+{\large\frac{\partial u}{\partial t} 
+= {c^2} \left( \frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2} \right) } ,\; 
+-1 \leq x \leq 1,\; -1 \leq y \leq 1,  \;  t \geq 0 \\
+{\large\frac{\partial u}{\partial x}\big|_{x = -1}= 
+\frac{\partial u}{\partial y}\big|_{y = -1} = 
+\frac{\partial u}{\partial y}\big|_{y = 1}} 
+= 0\\
+{\large[\frac{\partial u}{\partial x} }+ hu]\big|_{x = 1} = \varphi  \\ 
+u(x,y,0) = f(x,y)
+\end{cases}
+$$
+$$
+\begin{cases}
+{\large\frac{u_{i+ Ny}^k - u_{i}^k}{\Delta x_1}} = 0 \\
+{\large\frac{u_{i+ 1}^k - u_{i}^k}{\Delta y_1}} = 0 \\
+{\large\frac{u_{i}^k - u_{i - 1}^k}{\Delta y_{Ny}}} = 0 \\
+{\large\frac{u_{i}^k - u_{i - Ny - 1}^k}{\Delta x_{Nx}} + h u_i^k }= \varphi \\
+\end{cases}
+$$
+
+####Example:
+$$
+\begin{cases}
+{\large\frac{\partial u}{\partial t} 
+= \left( \frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2} \right) } ,\; 
+-1 \leq x \leq 1,\; -1 \leq y \leq 1,  \;  t \geq 0 \\
+{\large\frac{\partial u}{\partial x}\big|_{x = -1}= 
+\frac{\partial u}{\partial y}\big|_{y = -1} = 
+\frac{\partial u}{\partial y}\big|_{y = 1}} 
+= 0\\
+{\large[\frac{\partial u}{\partial x} }+ 10 u]\big|_{x = 1} = 0 \\ 
+u(x,y,0) = 
+[1 + \cos(\pi x)][1 + \cos(\pi y)]
+\end{cases}
+$$
+![HeatTransferEquRobinBC2D](\Figures/HeatTransferEquRobinBC2D.gif)
+
+Wave Equation Spectral Method
+-----------------
+$$
+\begin{cases}
+{\large \frac{\partial^2 u}{\partial t^2}} = \lambda^2{\large\frac{\partial^2 u}{\partial x^2}}, \quad -1 < x < 1,\; 0 < t < T\\
+u(-1,t) = 0, \quad u(1,t) = 0,  t \leq 0 \\
+u(x,0) = \varphi_1(x), \quad {\large \frac{\partial u(x,0)}{ \partial t}} = \varphi_2, \quad -1 \leq x \leq 1
+\end{cases}
+$$
+$$
+\frac{\bm{u}^{k+1}-2\bm{u}^{k}+\bm{u}^{k-1}}{\Delta t^2}
+= \lambda^2 \tilde{\bm{D}}_N^2\bm{u}^{k+1}
+$$
+$$
+\left(\frac{\bm{I}}{\Delta t^2} - \lambda^2 \tilde{\bm{D}}_N^2\right)\bm{u}^{k+1}
+= \frac{2}{\Delta t^2}\bm{u}^k - \frac{1}{\Delta t^2}\bm{u}^{k-1}
+$$
+
+###Two Dimension Wave equation
+$$
+\Delta = \frac{\partial^2 }{\partial x^2} + \frac{\partial^2 }{\partial y^2}
+\to {\bm{L}} 
+= \left(\bm{I}_{N+1} \otimes  {\bm{D}}^2_M + {\bm{D}}^2_N \otimes \bm{I}_{M+1} \right)
+$$
+$$
+\frac{\bm{u}^{k+1}-2\bm{u}^{k}+\bm{u}^{k-1}}{\Delta t^2}
+= \lambda^2 \left(\bm{I}_{N+1} \otimes  {\bm{D}}^2_M + {\bm{D}}^2_N \otimes \bm{I}_{M+1} \right)\bm{u}^{k+1}
+$$
+$$
+\left[\frac{\bm{I}}{\Delta t} - 
+\lambda^2\left(\bm{I}_{N+1} \otimes  {\bm{D}}^2_M + {\bm{D}}^2_N \otimes \bm{I}_{M+1} \right)\right]
+\bm{u}^{k+1} 
+= \frac{2}{\Delta t^2}\bm{u}^k - \frac{1}{\Delta t^2}\bm{u}^{k-1}
+$$
+
+###Example
+$$
+\begin{cases}
+{\large \frac{\partial^2 u}{\partial t^2}} 
+= \frac{1}{2}
+\left({\large\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}}\right), 
+\quad 0 < x < 1,\; 0 < y < 1,\; t > 0\\
+u(0,y,t) = u(0,y,t)=0 \\
+u(x,0,t) = u(x,0,t)=0 \\
+u(x,y,0) = \sin(\pi x)\sin(\pi y)
+\end{cases}
+$$
+$$
+u(x,y,t) =\sin(\pi x)\sin(\pi y)\cos(\pi t)
+$$
+#####Analytic solution
+![WaveEuqationDirichletBC2DAnalytic](Figures/WaveEuqationDirichletBC2DAnalytic.gif)
+#####Approximate solution
+![WaveEuqationDirichletBC2DAnalytic](Figures/WaveEuqationDirichletBC2DAnalyticNumerical.gif)
