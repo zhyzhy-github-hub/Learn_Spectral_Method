@@ -51,6 +51,7 @@ $$
 $$
 \left[\bm{I}_{N+1} - \frac{\Delta t}{\rho c_p}\bm{D}_N \left( \bm{K} \cdot \bm{D}_N \right) \right] \bm{T}^{n+1} = \bm{T}^{n}
 $$
+![VariableCoeffieientGeoThermalFIeld1D](Figures/VariableCoeffieientGeoThermalFIeld1D.gif)
 
 ### 2D euqation
 
@@ -161,7 +162,7 @@ $$
 \bm{T}^{n+1} =  \bm{T}^{n}
 $$
 
-![ConstantCoeffieientGeoThermalFIeld1D](\Figures/ConstantCoeffieientGeoThermalFIeld1D.gif)
+![ConstantCoeffieientGeoThermalFIeld1D](Figures/ConstantCoeffieientGeoThermalFIeld1D.gif)
 
 ###2D equation
 
@@ -181,7 +182,7 @@ $$
 =k \cdot \left(\bm{I}_{N+1} \otimes  {\bm{D}}^2_M + {\bm{D}}^2_N \otimes \bm{I}_{M+1} \right)\bm{T}^{n+1}
 $$
 
-![](Figures/ConstantCoeffieientGeoThermalFIeld2D.gif)
+![ConstantCoeffieientGeoThermalFIeld2D](Figures/ConstantCoeffieientGeoThermalFIeld2D.gif)
 ##Unit
 | Symbols | Description | Units |
 | :-----: | :--------------------: | :---------------------: |
